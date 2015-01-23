@@ -50,6 +50,18 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	drive();
+    }
+    
+    /**
+     * This function is called periodically during test mode
+     */
+    public void testPeriodic() {
+    
+    }
+    
+    public void drive()
+    {
     	if (mode == DriveMode.Tank){
     		double left = leftStick.getY();
     		double right = rightStick.getY();
@@ -63,17 +75,10 @@ public class Robot extends IterativeRobot {
     		double speed = leftStick.getY();
     		leftMotor.set(speed);
     	}
-    	else if (mode == DriveMode.Straight)
+    	else if (mode == DriveMode.Rotate)
     	{
     		
     	}
-    }
-    
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
-    
     }
     
 }
