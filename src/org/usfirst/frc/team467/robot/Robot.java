@@ -77,7 +77,9 @@ public class Robot extends IterativeRobot {
     	}
     	else if (mode == DriveMode.Rotate)
     	{
-    		
+    		double speed = leftStick.getX();
+    		leftMotor.set(speed);
+    		rightMotor.set(-speed);
     	}
     }
     
