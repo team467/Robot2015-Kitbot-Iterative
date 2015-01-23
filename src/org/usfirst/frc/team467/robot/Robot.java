@@ -29,8 +29,8 @@ public class Robot extends IterativeRobot {
     	leftStick = new Joystick(0);
         rightStick = new Joystick(1);
         
-    	leftMotor = new CANTalon(1); //.changeControlMode(controlMode.<Mode Here>)
-    	rightMotor = new CANTalon(2);
+    	leftMotor = new CANTalon(2); //.changeControlMode(controlMode.<Mode Here>)
+    	rightMotor = new CANTalon(1);
 //    	leftMotor.disableControl();
 //    	rightMotor.disableControl();
     }
