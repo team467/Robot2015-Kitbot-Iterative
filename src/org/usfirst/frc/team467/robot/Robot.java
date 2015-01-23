@@ -31,8 +31,8 @@ public class Robot extends IterativeRobot {
         
     	leftMotor = new CANTalon(1); //.changeControlMode(controlMode.<Mode Here>)
     	rightMotor = new CANTalon(2);
-    	leftMotor.disableControl();
-    	rightMotor.disableControl();
+//    	leftMotor.disableControl();
+//    	rightMotor.disableControl();
     }
 
     /**
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
     	double left = leftStick.getY();
     	double right = rightStick.getY();
     	
-    	System.out.println(left + ", " + right);
+//    	System.out.println(left + ", " + right);
     	
     	leftMotor.set(left);
     	rightMotor.set(right);
