@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 //    	leftMotor.disableControl();
 //    	rightMotor.disableControl();
     	
-    	mode = DriveMode.Straight;
+    	mode = DriveMode.Tank;
     }
 
     /**
@@ -50,17 +50,22 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	if (mode == DriveMode.Straight)
+    	if (mode == DriveMode.Tank){
+    		double left = leftStick.getY();
+    		double right = rightStick.getY();
+    		leftMotor.set(left);
+    		rightMotor.set(right);
+//    		System.out.println(left + ", " + right);
+    	}
+    	
+    	else if (mode == DriveMode.Straight)
     	{
-
-        // Tank Drive
-    	double left = leftStick.getY();
-    	double right = rightStick.getY();
-    	
-//    	System.out.println(left + ", " + right);
-    	
-    	leftMotor.set(left);
-    	rightMotor.set(right);
+    		double speed = leftStick.getY();
+    		leftMotor.set(speed);
+    	}
+    	else if (mode == DriveMode.Straight)
+    	{
+    		
     	}
     }
     
