@@ -20,6 +20,8 @@ public class Robot extends IterativeRobot {
 	private CANTalon leftMotor;
 	private CANTalon rightMotor;
 	
+	private DriveMode mode;
+	
 //	private CameraServer cam;
     /**
      * This function is run when the robot is first started up and should be
@@ -33,6 +35,8 @@ public class Robot extends IterativeRobot {
     	rightMotor = new CANTalon(1);
 //    	leftMotor.disableControl();
 //    	rightMotor.disableControl();
+    	
+    	mode = DriveMode.Straight;
     }
 
     /**
@@ -46,6 +50,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	if (mode == DriveMode.Straight)
+    	{
+
         // Tank Drive
     	double left = leftStick.getY();
     	double right = rightStick.getY();
@@ -54,6 +61,7 @@ public class Robot extends IterativeRobot {
     	
     	leftMotor.set(left);
     	rightMotor.set(right);
+    	}
     }
     
     /**
