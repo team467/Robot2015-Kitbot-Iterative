@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.ButtonType;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +28,9 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+	@Override
     public void robotInit() {
+    	System.out.println("Blah");
     	leftStick = new Joystick(0);
         rightStick = new Joystick(1);
         
@@ -36,12 +39,13 @@ public class Robot extends IterativeRobot {
 //    	leftMotor.disableControl();
 //    	rightMotor.disableControl();
     	
-    	mode = DriveMode.Tank;
+    	mode = DriveMode.Straight;
     }
 
     /**
      * This function is called periodically during autonomous
      */
+	@Override
     public void autonomousPeriodic() {
 
     }
@@ -49,13 +53,17 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
+	@Override
     public void teleopPeriodic() {
+    	System.out.println("Periodic");
+    	updateButtons();
     	drive();
     }
     
     /**
      * This function is called periodically during test mode
      */
+	@Override
     public void testPeriodic() {
     
     }
@@ -74,13 +82,35 @@ public class Robot extends IterativeRobot {
     	{
     		double speed = leftStick.getY();
     		leftMotor.set(speed);
+    		rightMotor.set(speed);
     	}
     	else if (mode == DriveMode.Rotate)
     	{
-    		double speed = leftStick.getX();
-    		leftMotor.set(speed);
-    		rightMotor.set(-speed);
+    		double speed = leftStick.getTwist();
+    		leftMotor.set(-speed);
+    		rightMotor.set(speed);
     	}
+    	else if (mode == DriveMode.Both)
+    	{
+    		double speed = leftStick.getY();
+    		double turn = leftStick.getX();
+    		leftMotor.set(speed -= turn);
+    		rightMotor.set(speed += turn);
+    		
+    	}
+    }
+    
+    public void updateButtons()
+    {
+    	if (leftStick.getRawButton(2))
+    	{
+    		mode = DriveMode.Rotate;
+    	}
+    	else
+    	{
+    		mode = DriveMode.Straight;
+    	}
+//    	else if leftStick.getRawButton(button)
     }
     
 }
