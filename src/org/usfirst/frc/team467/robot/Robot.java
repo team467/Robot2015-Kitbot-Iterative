@@ -2,10 +2,10 @@
 package org.usfirst.frc.team467.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.ButtonType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -83,6 +83,7 @@ public class Robot extends IterativeRobot {
     		double speed = leftStick.getY();
     		leftMotor.set(speed);
     		rightMotor.set(speed);
+    		SmartDashboard.putNumber("Speed:", speed);
     	}
     	else if (mode == DriveMode.Rotate)
     	{
