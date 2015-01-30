@@ -76,6 +76,7 @@ public class Robot extends IterativeRobot {
     		leftMotor.set(left);
     		rightMotor.set(right);
 //    		System.out.println(left + ", " + right);
+    		SmartDashboard.putString("Drive Mode: ", "Tank");
     	}
     	
     	else if (mode == DriveMode.Straight)
@@ -84,12 +85,14 @@ public class Robot extends IterativeRobot {
     		leftMotor.set(speed);
     		rightMotor.set(speed);
     		SmartDashboard.putNumber("Speed:", speed);
+    		SmartDashboard.putString("Drive Mode: ", "Straight");
     	}
     	else if (mode == DriveMode.Rotate)
     	{
     		double speed = leftStick.getTwist();
     		leftMotor.set(-speed);
     		rightMotor.set(speed);
+    		SmartDashboard.putString("Drive Mode: ", "Rotate");
     	}
     	else if (mode == DriveMode.Both)
     	{
