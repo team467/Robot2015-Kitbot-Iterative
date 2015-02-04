@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team467.robot;
 
+import org.apache.log4j.Logger;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -15,6 +17,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	
+	private static final Logger LOGGER = Logger.getLogger(Robot.class);
+	
 	private Joystick leftStick;  // set to ID 1 in DriverStation
     private Joystick rightStick; // set to ID 2 in DriverStation
     
@@ -29,8 +34,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
 	@Override
-    public void robotInit() {
-    	System.out.println("Blah");
+    public void robotInit() {    	
     	leftStick = new Joystick(0);
         rightStick = new Joystick(1);
         
@@ -40,6 +44,7 @@ public class Robot extends IterativeRobot {
 //    	rightMotor.disableControl();
     	
     	mode = DriveMode.Straight;
+    	LOGGER.debug("Robot Initialized in mode " + mode.toString());
     }
 
     /**
